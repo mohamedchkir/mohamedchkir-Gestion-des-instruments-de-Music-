@@ -1,5 +1,38 @@
 body{
     background-image: url('/images/SL_123119_26540_03.png');
-    /* background-position: right bottom; */
     background-attachment: fixed;
 }
+.register{
+    text-decoration: none;
+}
+.rockstar{
+    background-color: rgb(255, 187, 14);
+        font-family: "Exo", sans-serif;
+        border-radius: 5px;
+        background: linear-gradient(to left,
+        #dcff13,
+        rgb(219, 204, 231),
+        rgb(255, 255, 6),
+        rgb(196, 197, 196),
+        yellow,
+        rgb(255, 0, 0),
+        red);
+-webkit-background-clip: text;
+color: transparent;
+}
+.signup:hover{
+    background-color: #0636c5;
+    color: aliceblue;
+    border: 0cm;
+}
+.login{
+    border: 0cm;
+    background-color: #0636c5;
+    color: #ffffff
+    
+}
+.text{
+    font-family: 'Sono', sans-serif;    
+}
+.form{
+ }       
