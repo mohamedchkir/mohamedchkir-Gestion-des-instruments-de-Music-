@@ -1,4 +1,23 @@
 body{
-    background-image: url('/images/15245884_SL_123119_26540_06\ \(1\).jpg');
+    background-image: url('images/15245884_SL_123119_26540_06\ \(1\).jpg');
     background-attachment: fixed;
+}
+.rockstar{
+    background-color: rgb(255, 187, 14);
+        font-family: "Exo", sans-serif;
+        border-radius: 5px;
+        background: linear-gradient(to left,
+        #dcff13,
+        rgb(219, 204, 231),
+        rgb(255, 255, 6),
+        rgb(196, 197, 196),
+        yellow,
+        rgb(255, 0, 0),
+        red);
+      -webkit-background-clip:text;color: transparent;
+}
+.error_msg{
+    
+background-color:
+crimson;
 }
