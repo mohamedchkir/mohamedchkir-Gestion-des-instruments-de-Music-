@@ -15,11 +15,11 @@ session_start();
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="signup.css" />
   <!-- BEGIN parsley css-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css" />
   <!-- END parsley css-->
+  <link rel="stylesheet" href="signup.css" />
 </head>
 
 <body>
@@ -59,12 +59,12 @@ session_start();
             <!-- Password input -->
             <div class="form-outline mb-2">
               <label class="text form-label text-dark" for="form3Example4">Password</label>
-              <input type="password" name="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter Password " required />
+              <input type="password" name="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter Password " required data-parsley-length="[8, 20]" />
             </div>
             <!--Confirm Password input -->
             <div class="form-outline mt-2 w-100">
               <label class="text form-label text-dark" for="form3Example4">Cofirm Password</label>
-              <input type="password" name="Cpassword" id="form3Example4" class="form-control form-control-lg" placeholder="Confirm Password" required />
+              <input type="password" name="Cpassword" id="form3Example5" class="form-control form-control-lg" placeholder="Confirm Password" required data-parsley-equalto="#form3Example4" />
             </div>
             <div class="text-center text-lg-start mt-4 pt-2">
               <button name="submit" type="submit" class="login btn btn-primary btn-lg mb-4" style="padding-left: 2.5rem; padding-right: 2.5rem">Sign Up</button>

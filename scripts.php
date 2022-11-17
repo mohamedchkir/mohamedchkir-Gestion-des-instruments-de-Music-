@@ -14,13 +14,9 @@ if (isset($_POST['submit'])) {
     if (mysqli_num_rows($result) > 0) {
         $_SESSION['error'] = 'user already exist';
     } else {
-        if ($password != $Cpassword) {
-            $_SESSION['error'] = 'password not matched';
-        } else {
-            $insert = " INSERT INTO users(name,email,password) VALUES ('$name','$email','$password')";
-            mysqli_query($conn, $insert);
-            header('location:login.php');
-        }
+        $insert = " INSERT INTO users(name,email,password) VALUES ('$name','$email','$password')";
+        mysqli_query($conn, $insert);
+        header('location:login.php');
     }
 };
 if (isset($_POST['login'])) {
@@ -30,11 +26,12 @@ if (isset($_POST['login'])) {
 
     $select = "SELECT * FROM users WHERE email='$email' && password='$password'";
     $result = mysqli_query($conn, $select);
+
     if (mysqli_num_rows($result) > 0) {
         header('location:dashbord.php');
         die();
     } else {
-        $_SESSION['error'];
+        // $_SESSION['error'];
         header('location:login.php');
     }
 };

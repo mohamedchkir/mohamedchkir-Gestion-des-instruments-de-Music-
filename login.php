@@ -25,7 +25,7 @@ session_start();
           <h3 class="rockstar mt-2"><strong>ROCKSTAR</strong></h3>
         </a>
         <form class="d-flex">
-          <a href="index.html"><button class="signup btn btn-outline-primary" type="button">Sign Up</button></a>
+          <a href="index.php"><button class="signup btn btn-outline-primary" type="button">Sign Up</button></a>
         </form>
       </div>
     </nav>
@@ -47,7 +47,7 @@ session_start();
             <!-- Email input -->
             <div class="form-outline mb-4">
               <label class="text form-label text-white" for="form3Example3 ">Email address</label>
-              <input name="password" type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
+              <input name="email" type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
             </div>
 
             <!-- Password input -->
@@ -57,7 +57,7 @@ session_start();
             </div>
             <div class="text-center text-lg-start mt-4 pt-2">
               <button name="login" type="submit" class="login btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem">Login</button>
-              <p class="text small fw-bold mt-2 pt-1 mb-0 text-white">Don't have an account? <a href="index.html" class="register text-danger">Register Now</a></p>
+              <p class="text small fw-bold mt-2 pt-1 mb-0 text-white">Don't have an account? <a href="index.php" class="register text-danger">Register Now</a></p>
             </div>
           </form>
         </div>
