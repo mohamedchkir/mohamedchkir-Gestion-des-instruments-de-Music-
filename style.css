@@ -1,25 +1,6 @@
-body{
-    background-image: url('images/Nouveau projet (1).jpg');
-    background-attachment: fixed;
-   
-    
+.navigation{
+    color: rgb(135, 135, 135);
 }
-.register{
-    text-decoration: none;
+.navigation :hover{
+    color: white !important;
 }
-
-.signup:hover{
-    background-color: #0636c5;
-    color: aliceblue;
-    border: 0cm;
-}
-.login{
-    border: 0cm;
-    background-color: #0636c5;
-    color: #ffffff
-    
-}
-.text{
-    font-family: 'Sono', sans-serif;    
-}
-   

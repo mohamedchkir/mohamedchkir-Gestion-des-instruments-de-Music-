@@ -163,3 +163,11 @@ if (isset($_POST['update_instrument'])) {
 //         exit(0);
 //     }
 // }
+// CONT PRODUCT FUNCTION
+function countproduct()
+{
+    $requete = "SELECT COUNT(id) FROM instruments";
+    global $conn;
+    $res = mysqli_fetch_assoc(mysqli_query($conn, $requete));
+    return $res['COUNT(id)'];
+}

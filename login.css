@@ -1,0 +1,25 @@
+body{
+    background-image: url('images/Nouveau projet (1).jpg');
+    background-attachment: fixed;
+   
+    
+}
+.register{
+    text-decoration: none;
+}
+
+.signup:hover{
+    background-color: #0636c5;
+    color: aliceblue;
+    border: 0cm;
+}
+.login{
+    border: 0cm;
+    background-color: #0636c5;
+    color: #ffffff
+    
+}
+.text{
+    font-family: 'Sono', sans-serif;    
+}
+   

@@ -12,34 +12,34 @@ require 'config.php';
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="style.css">
     <title>Instruments</title>
 </head>
 <header>
     <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white">ROCKSTAR STORE</h4>
+                <div class="col-sm-8 col-md-7 pt-3">
                     <p class="text-muted font-monospace">WELCOME IN YOUR STORE</p>
+                    <p class="text-light font-monospace">HERE YOU CAN SEE YOUR PRODUCTS </p>
                 </div>
-                <div class="col-sm-4 offset-md-1 py-4">
-                    <ul class="list-unstyled">
+                <div class="col-sm-4 offset-md-1 pt-3">
+                    <ul class="list-unstyled d-grid gap-2">
                         <h3 class="text-light">profil</h3>
-                        <li><a href="dashbord.php" class="text-white text-decoration-none">Home</a></li>
-                        <li><a href="instruments.php" class="text-white text-decoration-none">Product Table</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">setting</a></li>
-                        <li><a href="login.php" class=" btn btn-danger btn-sm">Log out</a></li>
+                        <li class=""><a href="dashbord.php" class="link-light text-decoration-none font-monospace">Home</a></li>
+                        <li class=""><a href="instruments.php" class="link-light text-decoration-none font-monospace">Product Table</a></li>
+                        <li class=""><a href="#" class="link-light text-decoration-none font-monospace">setting</a></li>
+                        <li><a href="login.php" class=" btn btn-danger btn-sm font-monospace">Log out</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="navbar navbar-dark bg-dark shadow-sm py-0">
         <div class="container">
             <a href="#" class="navbar-brand d-flex align-items-center">
                 <!-- <strong><i class="fa-solid fa-music"></i> ROCKSTOR</strong> -->
-                <img style="width: 83px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
+                <img style="width: 80px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,8 +49,39 @@ require 'config.php';
 </header>
 
 <body>
+    <div class="d-flex flex-row justify-content-center gap-2 pt-5 ">
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header text-light font-monospace text-center">Count Price</div>
+            <div class="card-body">
+                <h5 class="card-title">Dark card title</h5>
+                <p class="card-text"></p>
+            </div>
+        </div>
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+                <h5 class="card-title">Danger card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
 
-    <table class="table table-dark table-striped mt-5 ">
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+                <h5 class="card-title">Danger card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header text-light font-monospace text-center">Count Product</div>
+            <div class="card-body">
+                <h5 class="card-title">Dark card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-dark table-striped mt-1 ">
         <thead>
             <tr>
                 <th scope="col">Image</th>
@@ -71,7 +102,7 @@ require 'config.php';
                 foreach ($query_run as $instrument) {
             ?>
                     <tr>
-                        <td><img height="50px" src="uploads/<?= $instrument['image']; ?>" alt=""></td>
+                        <td><img width="55px" height="55px" src="uploads/<?= $instrument['image']; ?>" alt=""></td>
                         <td><?= $instrument['title']; ?></td>
                         <td><?= $instrument['type']; ?></td>
                         <td><?= $instrument['price']; ?></td>
@@ -87,7 +118,7 @@ require 'config.php';
             <?php
                 }
             } else {
-                echo "<h5> No Record Found </h5>";
+                echo "<h5 > No Record Found </h5>";
             }
             ?>
         </tbody>
