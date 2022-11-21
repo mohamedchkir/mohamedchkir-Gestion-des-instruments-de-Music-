@@ -1,6 +1,6 @@
 <?php
-session_start();
 require 'config.php';
+include 'scripts.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,12 +20,12 @@ require 'config.php';
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-md-7 pt-3">
-                    <p class="text-muted font-monospace">WELCOME IN YOUR STORE</p>
-                    <p class="text-light font-monospace">HERE YOU CAN SEE YOUR PRODUCTS </p>
+                    <p class="text-muted font-monospace">&nbsp; &nbsp; &nbsp; WELCOME IN YOUR STORE</p>
+                    <p class="text-light font-monospace">&nbsp; HERE YOU CAN SEE YOUR PRODUCTS <br> &nbsp; &nbsp;&nbsp; &nbsp; ENJOY!!!!</p>
                 </div>
                 <div class="col-sm-4 offset-md-1 pt-3">
                     <ul class="list-unstyled d-grid gap-2">
-                        <h3 class="text-light">profil</h3>
+                        <h3 class="text-light fst-italic"> HELLO <?php echo $_SESSION['username'] ?></h3>
                         <li class=""><a href="dashbord.php" class="link-light text-decoration-none font-monospace">Home</a></li>
                         <li class=""><a href="instruments.php" class="link-light text-decoration-none font-monospace">Product Table</a></li>
                         <li class=""><a href="#" class="link-light text-decoration-none font-monospace">setting</a></li>
@@ -53,30 +53,30 @@ require 'config.php';
         <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
             <div class="card-header text-light font-monospace text-center">Count Price</div>
             <div class="card-body">
-                <h5 class="card-title">Dark card title</h5>
-                <p class="card-text"></p>
+
+                <p class="card-text"><?php echo (countPrice()) ?></p>
             </div>
         </div>
         <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+            <div class="card-header text-light font-monospace text-center">Max Price</div>
             <div class="card-body">
-                <h5 class="card-title">Danger card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                <p class="card-text"><?php echo (maxPrice()) ?></p>
             </div>
         </div>
 
         <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+            <div class="card-header text-light font-monospace text-center">Min Price</div>
             <div class="card-body">
-                <h5 class="card-title">Danger card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                <p class="card-text"><?php echo (minPrice()) ?></p>
             </div>
         </div>
         <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
             <div class="card-header text-light font-monospace text-center">Count Product</div>
             <div class="card-body">
-                <h5 class="card-title">Dark card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                <p class="card-text"><?php echo (countProduct()) ?></p>
             </div>
         </div>
     </div>

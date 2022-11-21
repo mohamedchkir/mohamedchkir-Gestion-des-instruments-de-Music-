@@ -35,10 +35,10 @@ if (isset($_POST['login'])) {
 
     $select = "SELECT * FROM users WHERE email='$email' && password='$password'";
     $result = mysqli_query($conn, $select);
-
+    $row = mysqli_fetch_assoc($result);
     if (mysqli_num_rows($result) > 0) {
         header('location:dashbord.php');
-
+        $_SESSION['username'] = $row['name'];
         die;
     } else {
         // $_SESSION['error'];
@@ -163,11 +163,49 @@ if (isset($_POST['update_instrument'])) {
 //         exit(0);
 //     }
 // }
-// CONT PRODUCT FUNCTION
-function countproduct()
+// COUNT PRODUCT FUNCTION
+function countProduct()
 {
     $requete = "SELECT COUNT(id) FROM instruments";
     global $conn;
     $res = mysqli_fetch_assoc(mysqli_query($conn, $requete));
     return $res['COUNT(id)'];
+}
+// COUNT PRICE FUNCTION
+function countPrice()
+{
+    $total = 0;
+    global $rows, $conn;
+    $requete = "SELECT SUM(price) FROM instruments;";
+    $res = mysqli_fetch_assoc(mysqli_query($conn, $requete));
+    //$total+= $rows['price'];
+    //var_dump($res[0]);
+
+    return $res['SUM(price)'];
+}
+
+// MAX PRICE FUNCTION
+function maxPrice()
+{
+    $total = 0;
+    global $rows, $conn;
+    $requete = "SELECT MAX(price) FROM instruments;";
+    $res = mysqli_fetch_array(mysqli_query($conn, $requete));
+    //$total+= $rows['price'];
+    //var_dump($res[0]);
+
+    return $res['MAX(price)'];
+}
+
+// MIN PRICE FUNCTION
+function minPrice()
+{
+    $total = 0;
+    global $rows, $conn;
+    $requete = "SELECT MIN(price) FROM instruments;";
+    $res = mysqli_fetch_array(mysqli_query($conn, $requete));
+    //$total+= $rows['price'];
+    //var_dump($res[0]);
+
+    return $res['MIN(price)'];
 }

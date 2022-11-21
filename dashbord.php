@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,26 +20,27 @@
         <div class="collapse bg-dark" id="navbarHeader">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-                        <h4 class="text-white">ROCKSTAR STORE</h4>
-                        <p class="text-muted">WELCOME IN YOUR STORE</p>
+                    <div class="col-sm-8 col-md-7 pt-3">
+                        <p class="text-muted font-monospace">&nbsp; &nbsp; &nbsp; WELCOME IN YOUR STORE</p>
+                        <p class="text-light font-monospace">&nbsp; HERE YOU CAN SEE YOUR PRODUCTS <br> &nbsp; &nbsp;&nbsp; &nbsp; ENJOY!!!!</p>
                     </div>
-                    <div class="col-sm-4 offset-md-1 py-4">
-                        <ul class="list-unstyled">
-                            <h3 class="text-light">profil</h3>
-                            <li><a href="dashbord.php" class="text-white text-decoration-none">Home</a></li>
-                            <li><a href="instruments.php" class="text-white text-decoration-none">Product Table</a></li>
-                            <li><a href="#" class="text-white text-decoration-none">setting</a></li>
-                            <li><a href="login.php" class=" btn btn-danger btn-sm">Log out</a></li>
+                    <div class="col-sm-4 offset-md-1 pt-3">
+                        <ul class="list-unstyled d-grid gap-2">
+                            <h3 class="text-light fst-italic"> HELLO <?php echo $_SESSION['username'] ?></h3>
+                            <li class=""><a href="dashbord.php" class="link-light text-decoration-none font-monospace">Home</a></li>
+                            <li class=""><a href="instruments.php" class="link-light text-decoration-none font-monospace">Product Table</a></li>
+                            <li class=""><a href="#" class="link-light text-decoration-none font-monospace">setting</a></li>
+                            <li><a href="login.php" class=" btn btn-danger btn-sm font-monospace">Log out</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="navbar navbar-dark bg-dark shadow-sm py-0">
             <div class="container">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <img style="width: 83px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
+                    <!-- <strong><i class="fa-solid fa-music"></i> ROCKSTOR</strong> -->
+                    <img style="width: 80px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
