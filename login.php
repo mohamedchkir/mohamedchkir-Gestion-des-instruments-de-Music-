@@ -19,10 +19,10 @@ session_start();
 
 <body>
   <header>
-    <nav class="navbar navbar-light">
-      <div class="container-fluid mb-4">
+    <nav class="navbar navbar-light  ">
+      <div class="container-fluid mb-5 ">
         <a class="navbar-brand" href="#">
-          <h3 class="rockstar mt-2"><strong>ROCKSTAR</strong></h3>
+         <img style="width: 83px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
         </a>
         <form class="d-flex">
           <a href="index.php"><button class="signup btn btn-outline-primary" type="button">Sign Up</button></a>
@@ -30,12 +30,12 @@ session_start();
       </div>
     </nav>
   </header>
-  <section class="vh-100">
+  <section class="">
     <div class="container-fluid h-custom">
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-4 col-xl-4 offset-xl-5">
-          <form class="form" method="post" action="scripts.php">
-            <h2 class="text-warning"><strong>GOOD TO SEE YOU AGAIN</strong></h2>
+          <form class="form row justify-content-center bg-white" method="post" action="scripts.php">
+          <img class="bg-black mt-1" style="width: 150px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
             <?php
             if (isset($_SESSION['error'])) {
 
