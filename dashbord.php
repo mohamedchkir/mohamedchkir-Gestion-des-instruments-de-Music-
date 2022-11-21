@@ -22,9 +22,10 @@
                     <div class="col-sm-4 offset-md-1 py-4">
                         <ul class="list-unstyled">
                             <h3 class="text-light">profil</h3>
-                            <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                            <li><a href="dashbord.php" class="text-white text-decoration-none">Home</a></li>
+                            <li><a href="instruments.php" class="text-white text-decoration-none">Product Table</a></li>
                             <li><a href="#" class="text-white text-decoration-none">setting</a></li>
-                            <li><a href="login.php" class="text-white text-decoration-none">log out</a></li>
+                            <li><a href="login.php" class=" btn btn-danger btn-sm">Log out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -33,7 +34,7 @@
         <div class="navbar navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <strong><i class="fa-solid fa-music"></i> ROCKSTOR</strong>
+                    <img style="width: 83px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

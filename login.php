@@ -22,10 +22,10 @@ session_start();
     <nav class="navbar navbar-light  ">
       <div class="container-fluid mb-5 ">
         <a class="navbar-brand" href="#">
-         <img style="width: 83px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
+          <img style="width: 83px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
         </a>
         <form class="d-flex">
-          <a href="index.php"><button class="signup btn btn-outline-primary" type="button">Sign Up</button></a>
+          <a href="sign up.php"><button class="signup btn btn-outline-primary" type="button">Sign Up</button></a>
         </form>
       </div>
     </nav>
@@ -34,8 +34,8 @@ session_start();
     <div class="container-fluid h-custom">
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-4 col-xl-4 offset-xl-5">
-          <form class="form row justify-content-center bg-white" method="post" action="scripts.php">
-          <img class="bg-black mt-1" style="width: 150px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
+          <form class="form row justify-content-center bg-white rounded-4 p-3 mb-5  rounded" method="post" action="scripts.php">
+            <img class="pb-2 bg-dark rounded mt-1 shadow-lg  mb-5" style="width: 150px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
             <?php
             if (isset($_SESSION['error'])) {
 
@@ -45,19 +45,19 @@ session_start();
 
             ?>
             <!-- Email input -->
-            <div class="form-outline mb-4">
-              <label class="text form-label text-white" for="form3Example3 ">Email address</label>
+            <div class="form-outline mb-2">
+              <label class="text form-label text-dark" for="form3Example3 "><strong>Email address</strong> </label>
               <input name="email" type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-3">
-              <label class="text form-label text-white" for="form3Example4">Password</label>
+              <label class="text form-label text-dark" for="form3Example4"> <strong>Password</strong> </label>
               <input name="password" type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" />
             </div>
             <div class="text-center text-lg-start mt-4 pt-2">
               <button name="login" type="submit" class="login btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem">Login</button>
-              <p class="text small fw-bold mt-2 pt-1 mb-0 text-white">Don't have an account? <a href="index.php" class="register text-danger">Register Now</a></p>
+              <p class="text small fw-bold mt-2 pt-1 mb-0 text-wdark">Don't have an account? <a href="sign up.php" class="register text-danger">Register Now</a></p>
             </div>
           </form>
         </div>
