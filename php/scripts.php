@@ -39,6 +39,7 @@ if (isset($_POST['login'])) {
     if (mysqli_num_rows($result) > 0) {
         header('location:dashbord.php');
         $_SESSION['username'] = $row['name'];
+        $_SESSION['admin-id'] = $row['id'];
         die;
     } else {
         // $_SESSION['error'];

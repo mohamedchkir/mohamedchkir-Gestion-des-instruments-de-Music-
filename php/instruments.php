@@ -1,6 +1,10 @@
 <?php
 require 'config.php';
 include 'scripts.php';
+if(!isset($_SESSION['admin-id'])){
+    header('location: login.php');
+}else{
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,7 +32,7 @@ include 'scripts.php';
                     <ul class="list-unstyled d-grid gap-2">
                         <h3 class="text-light fst-italic"> <?php echo $_SESSION['username'] ?></h3>
                         <li class=""><a href="dashbord.php" class="link-light text-decoration-none font-monospace">Home</a></li>
-                        <li class=""><a href="instruments.php" class="link-light text-decoration-none font-monospace">Product Table</a></li>
+                        <li class=""><a href="instruments.php" class="link-light text-decoration-none font-monospace">Product Table && Statistiques</a></li>
                         <li class=""><a href="#" class="link-light text-decoration-none font-monospace">setting</a></li>
                         <li><a href="login.php" class=" btn btn-danger btn-sm font-monospace">Log out</a></li>
                     </ul>
@@ -40,7 +44,7 @@ include 'scripts.php';
         <div class="container">
             <a href="#" class="navbar-brand d-flex align-items-center">
                 <!-- <strong><i class="fa-solid fa-music"></i> ROCKSTOR</strong> -->
-                <img style="width: 80px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
+                <img style="width: 80px;" src="../images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -55,14 +59,16 @@ include 'scripts.php';
             <div class="card-header text-light font-monospace text-center fw-bold">Count Price</div>
             <div class="card-body">
 
-                <p class="card-text bg-warning p-3 rounded-circle text-dark fw-bold"><?php echo (countPrice()) ?></p>
+                <p class="card-text bg-light
+                 p-3 rounded-circle text-dark fw-bold"><?php echo (countPrice()) ?></p>
             </div>
         </div>
         <div class="card text-white bg-danger mb-3 d-flex align-items-center" style="width: 18rem;">
             <div class="card-header text-light bg-danger font-monospace text-center fw-bold">Max Price</div>
             <div class="card-body">
 
-                <p class="card-text bg-warning p-3 rounded-circle text-dark fw-bold"><?php echo (maxPrice()) ?> DH</p>
+                <p class="card-text bg-light
+                 p-3 rounded-circle text-dark fw-bold"><?php echo (maxPrice()) ?> DH</p>
             </div>
         </div>
 
@@ -70,14 +76,16 @@ include 'scripts.php';
             <div class="card-header text-light bg-danger font-monospace text-center fw-bold">Min Price</div>
             <div class="card-body">
 
-                <p class="card-text bg-warning p-3 rounded-circle text-dark fw-bold"><?php echo (minPrice()) ?> DH</p>
+                <p class="card-text bg-light
+                 p-3 rounded-circle text-dark fw-bold"><?php echo (minPrice()) ?> DH</p>
             </div>
         </div>
         <div class="card text-white bg-dark mb-3 d-flex align-items-center" style="width: 18rem;">
             <div class="card-header text-light font-monospace text-center fw-bold">Count Product</div>
             <div class="card-body">
 
-                <p class="card-text bg-warning p-3 rounded-circle text-dark fw-bold"><?php echo (countProduct()) ?></p>
+                <p class="card-text bg-light
+                 p-3 rounded-circle text-dark fw-bold"><?php echo (countProduct()) ?></p>
             </div>
         </div>
     </div>
@@ -103,7 +111,7 @@ include 'scripts.php';
                 foreach ($query_run as $instrument) {
             ?>
                     <tr>
-                        <td><img width="55px" height="55px" src="uploads/<?= $instrument['image']; ?>" alt=""></td>
+                        <td><img width="55px" height="55px" src="../uploads/<?= $instrument['image']; ?>" alt=""></td>
                         <td><?= $instrument['title']; ?></td>
                         <td><?= $instrument['type']; ?></td>
                         <td><?= $instrument['price']; ?> DH</td>
@@ -139,3 +147,6 @@ include 'scripts.php';
 </body>
 
 </html>
+<?php
+}
+?>

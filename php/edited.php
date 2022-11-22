@@ -1,6 +1,9 @@
 <?php
-session_start();
 require 'config.php';
+include 'scripts.php';
+if(!isset($_SESSION['admin-id'])){
+    header('location: login.php');
+}else{
 ?>
 
 <!doctype html>
@@ -24,9 +27,9 @@ require 'config.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header text-warning border-bottom border-warning">
                         <h4>instrument Edit
-                            <a href="instruments.php" class="btn btn-danger float-end">BACK</a>
+                            <a href="instruments.php" class="btn btn-warning text-light float-end">BACK</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -41,23 +44,23 @@ require 'config.php';
                                 $instrument = mysqli_fetch_array($query_run);
                         ?>
                                 <form action="scripts.php" method="POST">
-                                    <input type="hidden" name="instrument_id" value="<?= $instrument['id']; ?>">
+                                    <input type="hidden"  name="instrument_id" value="<?= $instrument['id']; ?>">
 
                                     <label> <strong>IMAGE</strong></label>
                                     <div class="mb-3 d-flex justify-content-center">
-                                        <img class="text-center" height="150px" src="uploads/<?= $instrument['image']; ?>" alt="">
+                                        <img class="text-center" height="150px" src="../uploads/<?= $instrument['image']; ?>" alt="">
                                     </div>
                                     <div>
-                                        <input type="file" name="image">
+                                        <input type="file" class="form-control border-warning" name="image">
                                     </div>
 
                                     <div class="mb-3">
-                                        <label>instrument title</label>
-                                        <input type="text" name="title" value="<?= $instrument['title']; ?>" class="form-control">
+                                        <label> <strong>Title</strong></label>
+                                        <input type="text" class="form-control border-warning" name="title" value="<?= $instrument['title']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label>Type</label>
-                                        <select class="form-select" name="type" aria-label="Default select example" id="type">
+                                        <label><strong>Type</strong></label>
+                                        <select  class="form-select border-warning" name="type" aria-label="Default select example" id="type">
                                             <option value="BOWED STRINGS">BOWED STRINGS</option>
                                             <option value="WOODWIND">WOODWIND</option>
                                             <option value="BRASS INSTRUMENTS">BRASS INSTRUMENTS</option>
@@ -65,16 +68,16 @@ require 'config.php';
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label>price</label>
-                                        <input type="text" name="price" value="<?= $instrument['price']; ?>" class="form-control">
+                                        <label><strong>Price</strong></label>
+                                        <input  type="text" class="form-control border-warning" name="price" value="<?= $instrument['price']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label>description</label>
-                                        <input type="text" name="description" value="<?= $instrument['description']; ?>" class="form-control">
+                                        <label><strong>Description</strong></label>
+                                        <input  type="text" class="form-control border-warning" name="description" value="<?= $instrument['description']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" name="update_instrument" class="btn btn-primary">
-                                            Update instrument
+                                        <button type="submit" name="update_instrument" class="btn btn-warning text-light">
+                                            UPDATE
                                         </button>
                                     </div>
 
@@ -95,3 +98,6 @@ require 'config.php';
 </body>
 
 </html>
+<?php
+}
+?>

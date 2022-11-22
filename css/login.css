@@ -1,8 +1,7 @@
 body{
-    background-image: url('images/Nouveau projet (1).jpg');
+    background-image: url('../images/Nouveau.jpg');
     background-attachment: fixed;
    
-    
 }
 .register{
     text-decoration: none;

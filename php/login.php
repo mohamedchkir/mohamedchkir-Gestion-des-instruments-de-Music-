@@ -14,7 +14,7 @@ session_start();
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="../css/login.css" />
 </head>
 
 <body>
@@ -22,7 +22,7 @@ session_start();
     <nav class="navbar navbar-light  ">
       <div class="container-fluid mb-5 ">
         <a class="navbar-brand" href="#">
-          <img style="width: 83px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
+          <img style="width: 83px;" src="../images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
         </a>
         <form class="d-flex">
           <a href="sign up.php"><button class="signup btn btn-outline-primary" type="button">Sign Up</button></a>
@@ -35,7 +35,7 @@ session_start();
       <div class="row justify-content-center p-4">
         <div class="col-md-8 col-lg-4 col-xl-4 offset-xl-5">
           <form class="form row justify-content-center bg-white rounded-4 p-3 mb-5  rounded" method="post" action="scripts.php">
-            <img class="pb-2 bg-dark rounded mt-1 shadow-lg  mb-5" style="width: 150px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
+            <img class="pb-2 bg-dark rounded mt-1 shadow-lg  mb-5" style="width: 150px;" src="../images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
             <?php
             if (isset($_SESSION['error'])) {
 

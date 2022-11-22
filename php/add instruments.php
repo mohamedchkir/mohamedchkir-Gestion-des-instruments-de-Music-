@@ -1,3 +1,9 @@
+<?php
+include 'scripts.php';
+if(!isset($_SESSION['admin-id'])){
+    header('location: login.php');
+}else{
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,60 +19,30 @@
 </head>
 
 <body>
-    <header>
-        <div class="collapse bg-dark" id="navbarHeader">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-                        <h4 class="text-white">ROCKSTAR STORE</h4>
-                        <p class="text-muted">WELCOME IN YOUR STORE</p>
-                    </div>
-                    <div class="col-sm-4 offset-md-1 py-4">
-                        <ul class="list-unstyled">
-                            <h3 class="text-light">profil</h3>
-                            <li><a href="#" class="text-white text-decoration-none">Home</a></li>
-                            <li><a href="#" class="text-white text-decoration-none">setting</a></li>
-                            <li><a href="login.php" class="text-white bg-danger text-decoration-none">log out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-            <div class="container">
-                <a href="#" class="navbar-brand d-flex align-items-center">
-                    <strong><i class="fa-solid fa-music"></i> ROCKSTOR</strong>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </div>
-    </header>
     <section>
         <div class="container mt-5">
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header text-success border-bottom border-success">
                             <h4>Add an instrument
-                                <a href="instruments.php" class="btn btn-danger float-end ">BACK</a>
+                                <a href="instruments.php" class="btn btn-success float-end ">BACK</a>
                             </h4>
                         </div>
                         <div class="card-body">
                             <form action="scripts.php" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label>Image</label>
-                                    <input type="file" name="my_image" class="form-control">
+                                    <input type="file" class="form-control border-success" name="my_image" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label>Title</label>
-                                    <input type="text" name="title" class="form-control">
+                                    <input type="text" class="form-control border-success" name="title" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label>Type</label>
-                                    <select class="form-select" name="type" aria-label="Default select example" id="type">
+                                    <select class="form-select  border-success"  name="type" aria-label="Default select example" id="type">
                                         <option value="BOWED STRINGS">BOWED STRINGS</option>
                                         <option value="WOODWIND">WOODWIND</option>
                                         <option value="BRASS INSTRUMENTS">BRASS INSTRUMENTS</option>
@@ -75,14 +51,14 @@
                                 </div>
                                 <div class="mb-3">
                                     <label>Price</label>
-                                    <input type="text" name="price" class="form-control">
+                                    <input type="text" class="form-control border-success" name="price" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label>Description</label>
-                                    <input type="text" name="description" class="form-control">
+                                    <input type="text" class="form-control border-success" name="description" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" name="save" class="btn btn-primary">Save</button>
+                                    <button type="submit" name="save" class="btn btn-success">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -98,3 +74,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
 </html>
+<?php
+}
+
+?>
