@@ -32,7 +32,7 @@ session_start();
   </header>
   <section class="">
     <div class="container-fluid h-custom">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center p-4">
         <div class="col-md-8 col-lg-4 col-xl-4 offset-xl-5">
           <form class="form row justify-content-center bg-white rounded-4 p-3 mb-5  rounded" method="post" action="scripts.php">
             <img class="pb-2 bg-dark rounded mt-1 shadow-lg  mb-5" style="width: 150px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">

@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+include 'scripts.php';
 
 ?>
 <!DOCTYPE html>
@@ -47,47 +46,33 @@ session_start();
                 </button>
             </div>
         </div>
-        <!-- BOUTTONS GROUP -->
-        <div class="btn-group d-flex justify-content-evenly" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
-        </div>
     </header>
     <section>
-        <div class="cards d-flex justify-content-evenly py-4 ">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text overflow-auto">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                    <a href="#" class="btn btn-primary">Edit</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text overflow-auto">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                    <a href="#" class="btn btn-primary">Edit</a>
-                </div>
-            </div>
-            <div class="card " style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text overflow-auto">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                    <a href="#" class="btn btn-primary">Edit</a>
-                </div>
-            </div>
+        <div class="cards d-flex justify-content-evenly py-4 row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5 rounded ">
+
+            <?php
+            $query = "SELECT * FROM instruments";
+            $query_run = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($query_run) > 0) {
+                foreach ($query_run as $instrument) {
+            ?>
+                    <div class="card mb-3 " style="width: 18rem;">
+                        <div class="border" style="height: 200px ;background-attachement:fixed;background-position:center;background-repeat: no-repeat;
+                         background-image:url(uploads/<?= $instrument['image']; ?>)"></div>
+                        <div class="card-body">
+                            <h5 class="card-title text-truncat"><?= $instrument['title']; ?></h5>
+                            <p class="card-text overflow-auto text truncat"><?= $instrument['description']; ?></p>
+                            <p class="card-text overflow-auto text truncat"><?= $instrument['price']; ?></p>
+                        </div>
+                    </div>
+            <?php
+                }
+            } else {
+                echo "<h5> No Record Found </h5>";
+            }
+            ?>
+
         </div>
         </div>
 

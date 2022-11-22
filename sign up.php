@@ -23,19 +23,16 @@ session_start();
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-light">
-      <div class="container-fluid mb-4">
-        <a class="navbar-brand" href="#">
-          <h3 class="rockstar mt-2"><strong>ROCKSTAR</strong></h3>
-        </a>
-      </div>
-    </nav>
-  </header>
-  <section class="vh-100">
-    <div class="container mt-4 py-5" style="width: 800px">
-      <div class="row d-flex justify-content-center align-items-center rounded" style="background-color: rgba(240, 255, 255, 0.639)">
-        <div class="col-sm-10 col-md-11 col-lg-7">
+  <section class="">
+    <div class="container-fluid mt-4 d-flex justify-content-center">
+      <a class="navbar-brand pt-4" href="#">
+        <img style="width: 150px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
+      </a>
+    </div>
+    <div class="container  py-3" style="width: 550px">
+      <div class="d-flex justify-content-center align-items-center rounded bg-light">
+
+        <div class="col-sm-10 col-md-11 col-lg-7 ">
           <form method="POST" action="scripts.php" data-parsley-validate>
             <?php
             if (isset($_SESSION['error'])) {
@@ -47,8 +44,8 @@ session_start();
             ?>
             <!-- Username input -->
             <div class="form-outline my-2">
-              <label class="text form-label text-dark" for="form3Example3 ">Username</label>
-              <input type="text" name="name" id="form3Example3" class="form-control form-control-lg" placeholder="Enter your username" required data-parsley-length="[8, 40]" data-parsley-group="block-2" />
+              <label class="text form-label text-dark" for="form3Example2 ">Username</label>
+              <input type="text" name="name" id="form3Example2" class="form-control form-control-lg" placeholder="Enter your username" required data-parsley-length="[8, 40]" data-parsley-group="block-2" />
             </div>
             <!-- Email input -->
             <div class="form-outline mb-2">
@@ -66,7 +63,7 @@ session_start();
               <label class="text form-label text-dark" for="form3Example4">Cofirm Password</label>
               <input type="password" name="Cpassword" id="form3Example5" class="form-control form-control-lg" placeholder="Confirm Password" required data-parsley-equalto="#form3Example4" />
             </div>
-            <div class="text-center text-lg-start mt-4 pt-2">
+            <div class="text-center text-lg-start mt-4 pt-2 d-flex justify-content-center">
               <button name="signin" type="submit" class="login btn btn-primary btn-lg mb-4" style="padding-left: 2.5rem; padding-right: 2.5rem">Sign Up</button>
             </div>
           </form>

@@ -43,6 +43,14 @@ require 'config.php';
                                 <form action="scripts.php" method="POST">
                                     <input type="hidden" name="instrument_id" value="<?= $instrument['id']; ?>">
 
+                                    <label> <strong>IMAGE</strong></label>
+                                    <div class="mb-3 d-flex justify-content-center">
+                                        <img class="text-center" height="150px" src="uploads/<?= $instrument['image']; ?>" alt="">
+                                    </div>
+                                    <div>
+                                        <input type="file" name="image">
+                                    </div>
+
                                     <div class="mb-3">
                                         <label>instrument title</label>
                                         <input type="text" name="title" value="<?= $instrument['title']; ?>" class="form-control">

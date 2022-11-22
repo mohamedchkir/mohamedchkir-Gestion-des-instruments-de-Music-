@@ -6,14 +6,15 @@ include 'scripts.php';
 <html lang="en">
 
 <head>
+    <title>Instruments</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Instruments</title>
+    <!-- flaticons link -->
+    <link href="/your-path-to-uicons/css/uicons-[your-style].css" rel="stylesheet">
 </head>
 <header>
     <div class="collapse bg-dark" id="navbarHeader">
@@ -21,11 +22,11 @@ include 'scripts.php';
             <div class="row">
                 <div class="col-sm-8 col-md-7 pt-3">
                     <p class="text-muted font-monospace">&nbsp; &nbsp; &nbsp; WELCOME IN YOUR STORE</p>
-                    <p class="text-light font-monospace">&nbsp; HERE YOU CAN SEE YOUR PRODUCTS <br> &nbsp; &nbsp;&nbsp; &nbsp; ENJOY!!!!</p>
+                    <p class="text-light font-monospace">&nbsp; HERE YOU CAN SEE YOUR PRODUCTS</p>
                 </div>
                 <div class="col-sm-4 offset-md-1 pt-3">
                     <ul class="list-unstyled d-grid gap-2">
-                        <h3 class="text-light fst-italic"> HELLO <?php echo $_SESSION['username'] ?></h3>
+                        <h3 class="text-light fst-italic"> <?php echo $_SESSION['username'] ?></h3>
                         <li class=""><a href="dashbord.php" class="link-light text-decoration-none font-monospace">Home</a></li>
                         <li class=""><a href="instruments.php" class="link-light text-decoration-none font-monospace">Product Table</a></li>
                         <li class=""><a href="#" class="link-light text-decoration-none font-monospace">setting</a></li>
@@ -50,33 +51,33 @@ include 'scripts.php';
 
 <body>
     <div class="d-flex flex-row justify-content-center gap-2 pt-5 ">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header text-light font-monospace text-center">Count Price</div>
+        <div class="card text-white bg-dark mb-3 d-flex align-items-center" style="width: 18rem; ">
+            <div class="card-header text-light font-monospace text-center fw-bold">Count Price</div>
             <div class="card-body">
 
-                <p class="card-text"><?php echo (countPrice()) ?></p>
+                <p class="card-text bg-warning p-3 rounded-circle text-dark fw-bold"><?php echo (countPrice()) ?></p>
             </div>
         </div>
-        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-            <div class="card-header text-light font-monospace text-center">Max Price</div>
+        <div class="card text-white bg-danger mb-3 d-flex align-items-center" style="width: 18rem;">
+            <div class="card-header text-light bg-danger font-monospace text-center fw-bold">Max Price</div>
             <div class="card-body">
 
-                <p class="card-text"><?php echo (maxPrice()) ?></p>
+                <p class="card-text bg-warning p-3 rounded-circle text-dark fw-bold"><?php echo (maxPrice()) ?> DH</p>
             </div>
         </div>
 
-        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-            <div class="card-header text-light font-monospace text-center">Min Price</div>
+        <div class="card text-white bg-danger mb-3 d-flex align-items-center" style="width: 18rem;">
+            <div class="card-header text-light bg-danger font-monospace text-center fw-bold">Min Price</div>
             <div class="card-body">
 
-                <p class="card-text"><?php echo (minPrice()) ?></p>
+                <p class="card-text bg-warning p-3 rounded-circle text-dark fw-bold"><?php echo (minPrice()) ?> DH</p>
             </div>
         </div>
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header text-light font-monospace text-center">Count Product</div>
+        <div class="card text-white bg-dark mb-3 d-flex align-items-center" style="width: 18rem;">
+            <div class="card-header text-light font-monospace text-center fw-bold">Count Product</div>
             <div class="card-body">
 
-                <p class="card-text"><?php echo (countProduct()) ?></p>
+                <p class="card-text bg-warning p-3 rounded-circle text-dark fw-bold"><?php echo (countProduct()) ?></p>
             </div>
         </div>
     </div>
@@ -105,7 +106,7 @@ include 'scripts.php';
                         <td><img width="55px" height="55px" src="uploads/<?= $instrument['image']; ?>" alt=""></td>
                         <td><?= $instrument['title']; ?></td>
                         <td><?= $instrument['type']; ?></td>
-                        <td><?= $instrument['price']; ?></td>
+                        <td><?= $instrument['price']; ?> DH</td>
                         <td><?= $instrument['description']; ?></td>
                         <td>
                             <a href="view.php?id=<?= $instrument['id']; ?>" class="btn btn-info btn-sm">View</a>
@@ -118,7 +119,7 @@ include 'scripts.php';
             <?php
                 }
             } else {
-                echo "<h5 > No Record Found </h5>";
+                echo "<h5> No Record Found </h5>";
             }
             ?>
         </tbody>

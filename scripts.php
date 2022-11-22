@@ -55,18 +55,13 @@ if (isset($_POST['save']) && isset($_FILES['my_image'])) {
     $description = $_POST['description'];
     $type = $_POST['type'];
     $price = $_POST['price'];
-    // echo "<pre>";
-    // print_r($_FILES['my_image']);
-    // die;
-    // exit;
-    // echo "</pre>";
     $img_name = $_FILES['my_image']['name'];
     $img_size = $_FILES['my_image']['size'];
     $tmp_name = $_FILES['my_image']['tmp_name'];
     $error = $_FILES['my_image']['error'];
 
     if ($error === 0) {
-        if ($img_size > 125000) {
+        if ($img_size > 1250000) {
             $em = "Sorry, your file is too large.";
             header("Location: add instruments.php?error=$em");
         } else {
