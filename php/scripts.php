@@ -6,7 +6,7 @@ include('config.php');
 //SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
 session_start();
 
-// CHECK PASSWORD
+// SIGN UP
 if (isset($_POST['signin'])) {
 
     //SQL SELECT 
@@ -62,7 +62,7 @@ if (isset($_POST['save']) && isset($_FILES['my_image'])) {
     $error = $_FILES['my_image']['error'];
 
     if ($error === 0) {
-        if ($img_size > 1250000) {
+        if ($img_size > 50000000) {
             $em = "Sorry, your file is too large.";
             header("Location: add instruments.php?error=$em");
         } else {
@@ -73,7 +73,7 @@ if (isset($_POST['save']) && isset($_FILES['my_image'])) {
 
             if (in_array($img_ex_lc, $allowed_exs)) {
                 $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-                $img_upload_path = 'uploads/' . $new_img_name;
+                $img_upload_path = '../uploads/' . $new_img_name;
                 move_uploaded_file($tmp_name, $img_upload_path);
 
                 // INSERT INTO DB
@@ -105,11 +105,11 @@ if (isset($_GET['idInstrument'])) {
     $query_run = mysqli_query($conn, $query);
 
     if ($query_run) {
-        $_SESSION['message'] = "instrument Deleted Successfully";
+        $_SESSION['success'] = "instrument Deleted Successfully";
         header("Location: instruments.php");
         die;
     } else {
-        $_SESSION['message'] = "instrument Not Deleted";
+        $_SESSION['erreur'] = "instrument Not Deleted";
         header("Location: instruments.php");
         die;
     }
@@ -129,36 +129,16 @@ if (isset($_POST['update_instrument'])) {
     $query_run = mysqli_query($conn, $query);
 
     if ($query_run) {
-        $_SESSION['message'] = "instrument Updated Successfully";
+        $_SESSION['success'] = "instrument Updated Successfully";
         header("Location: instruments.php");
         exit(0);
     } else {
-        $_SESSION['message'] = "instrument Not Updated";
+        $_SESSION['erreur'] = "instrument Not Updated";
         header("Location: instruments.php");
         exit(0);
     }
 }
 
-// ADD PRODUCT
-// if (isset($_POST['save'])) {
-//     $Title = mysqli_real_escape_string($conn, $_POST['title']);
-//     $Type = mysqli_real_escape_string($conn, $_POST['type']);
-//     $Price = mysqli_real_escape_string($conn, $_POST['price']);
-//     $Description = mysqli_real_escape_string($conn, $_POST['description']);
-
-//     $query = "INSERT INTO instruments (title,type,price,description) VALUES ('$Title','$Type','$Price','$Description')";
-
-//     $query_run = mysqli_query($conn, $query);
-//     if ($query_run) {
-//         $_SESSION['message'] = "instrument Created Successfully";
-//         header("Location: instruments.php");
-//         exit(0);
-//     } else {
-//         $_SESSION['message'] = "instrument Not Created";
-//         header("Location: instruments.php");
-//         exit(0);
-//     }
-// }
 // COUNT PRODUCT FUNCTION
 function countProduct()
 {
@@ -174,9 +154,6 @@ function countPrice()
     global $rows, $conn;
     $requete = "SELECT SUM(price) FROM instruments;";
     $res = mysqli_fetch_assoc(mysqli_query($conn, $requete));
-    //$total+= $rows['price'];
-    //var_dump($res[0]);
-
     return $res['SUM(price)'];
 }
 
@@ -187,9 +164,6 @@ function maxPrice()
     global $rows, $conn;
     $requete = "SELECT MAX(price) FROM instruments;";
     $res = mysqli_fetch_array(mysqli_query($conn, $requete));
-    //$total+= $rows['price'];
-    //var_dump($res[0]);
-
     return $res['MAX(price)'];
 }
 
@@ -200,8 +174,5 @@ function minPrice()
     global $rows, $conn;
     $requete = "SELECT MIN(price) FROM instruments;";
     $res = mysqli_fetch_array(mysqli_query($conn, $requete));
-    //$total+= $rows['price'];
-    //var_dump($res[0]);
-
     return $res['MIN(price)'];
 }

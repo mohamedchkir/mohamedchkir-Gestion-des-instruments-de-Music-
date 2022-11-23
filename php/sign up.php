@@ -23,25 +23,32 @@ session_start();
 </head>
 
 <body>
+
   <section class="">
     <div class="container-fluid mt-4 d-flex justify-content-center">
       <a class="navbar-brand pt-4" href="#">
-        <img style="width: 150px;" src="images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
+        <img style="width: 150px;" src="../images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
       </a>
     </div>
     <div class="container  py-3" style="width: 550px">
       <div class="d-flex justify-content-center align-items-center rounded bg-light">
 
         <div class="col-sm-10 col-md-11 col-lg-7 ">
+          <!-- FORM -->
           <form method="POST" action="scripts.php" data-parsley-validate>
-            <?php
-            if (isset($_SESSION['error'])) {
 
-              echo '<span class="error_msg">' . $_SESSION['error'] . '</span>';
-              unset($_SESSION['error']);
-            }
+            <!-- utilisateur deja exist -->
+            <?php if (isset($_SESSION['error'])) : ?>
+              <div class="alert alert-danger alert-dismissible fade show">
+                <strong>error!</strong>
+                <?php
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+                ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+              </div>
+            <?php endif ?>
 
-            ?>
             <!-- Username input -->
             <div class="form-outline my-2">
               <label class="text form-label text-dark" for="form3Example2 ">Username</label>
