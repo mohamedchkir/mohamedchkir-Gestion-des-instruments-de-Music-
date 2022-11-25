@@ -14,6 +14,10 @@ session_start();
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet" />
+  <!-- BEGIN parsley css-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css" />
+  <!-- END parsley css-->
   <link rel="stylesheet" href="../css/login.css" />
 </head>
 
@@ -34,28 +38,30 @@ session_start();
     <div class="container-fluid h-custom">
       <div class="row justify-content-center p-4">
         <div class="col-md-8 col-lg-4 col-xl-4 offset-xl-5">
-          <form class="form row justify-content-center bg-white rounded-4 p-3 mb-5  rounded" method="post" action="scripts.php">
+          <form class="form row justify-content-center bg-white rounded-4 p-3 mb-5  rounded" method="post" action="scripts.php" data-parsley-validate>
             <img class="pb-2 bg-dark rounded mt-1 shadow-lg  mb-5" style="width: 150px;" src="../images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
-            <?php
-            if (isset($_SESSION['error'])) {
-
-              echo '<span class="error_msg">' . $_SESSION['error'] . '</span>';
-              unset($_SESSION['error']);
-            }
-
-            ?>
+            <?php if (isset($_SESSION['error'])) : ?>
+              <div class="alert alert-danger alert-dismissible fade show">
+                <strong>error!</strong>
+                <?php
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+                ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+              </div>
+            <?php endif ?>
             <!-- Email input -->
             <div class="form-outline mb-2">
               <label class="text form-label text-dark" for="form3Example3 "><strong>Email address</strong> </label>
-              <input name="email" type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
+              <input name="email" type="email" id="form3Example3" class="form-control form-control-lg" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[a-z]{2,4}$" placeholder="Enter a valid email address" required />
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-3">
               <label class="text form-label text-dark" for="form3Example4"> <strong>Password</strong> </label>
-              <input name="password" type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" />
+              <input name="password" type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" required data-parsley-length="[8, 20]" />
             </div>
-            <div class="text-center text-lg-start mt-4 pt-2">
+            <div class="text-center mt-4 pt-2">
               <button name="login" type="submit" class="login btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem">Login</button>
               <p class="text small fw-bold mt-2 pt-1 mb-0 text-wdark">Don't have an account? <a href="sign up.php" class="register text-danger">Register Now</a></p>
             </div>
@@ -64,6 +70,13 @@ session_start();
       </div>
     </div>
   </section>
+  <!-- BEGIN jquery js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- END jquery js-->
+
+  <!-- BEGIN parsley js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- END parsley js-->
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+include 'config.php';
 include 'scripts.php';
 if (!isset($_SESSION['admin-id'])) {
     header('location: login.php');
@@ -54,38 +54,47 @@ if (!isset($_SESSION['admin-id'])) {
     </header>
 
     <body>
-        <div class="d-flex flex-row justify-content-center gap-2 pt-5 ">
-            <div class="card text-white bg-dark mb-3 d-flex align-items-center" style="width: 18rem; ">
-                <div class="card-header text-light font-monospace text-center fw-bold">Count Price</div>
-                <div class="card-body">
-
-                    <p class="card-text bg-light
-                 p-3 rounded-circle text-dark fw-bold"><?php echo (countPrice()) ?></p>
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card shadow">
+                        <div class="p-3 pt-2 bg-dark text-light">
+                            <div class="text-end pt-1">
+                                <p class="mb-0 fw-light">Count Price</p>
+                                <h4 class="mb-0"><?= countPrice() ?></h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card text-white bg-danger mb-3 d-flex align-items-center" style="width: 18rem;">
-                <div class="card-header text-light bg-danger font-monospace text-center fw-bold">Max Price</div>
-                <div class="card-body">
-
-                    <p class="card-text bg-light
-                 p-3 rounded-circle text-dark fw-bold"><?php echo (maxPrice()) ?> DH</p>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card shadow">
+                        <div class="p-3 pt-2 bg-danger text-light">
+                            <div class="text-end pt-1">
+                                <p class="mb-0 fw-light">Max Price</p>
+                                <h4 class="mb-0"><?= maxPrice() ?> DH</h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card text-white bg-danger mb-3 d-flex align-items-center" style="width: 18rem;">
-                <div class="card-header text-light bg-danger font-monospace text-center fw-bold">Min Price</div>
-                <div class="card-body">
-
-                    <p class="card-text bg-light
-                 p-3 rounded-circle text-dark fw-bold"><?php echo (minPrice()) ?> DH</p>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card shadow">
+                        <div class="p-3 pt-2 bg-danger text-light">
+                            <div class="text-end pt-1">
+                                <p class="mb-0 fw-light">Min Price</p>
+                                <h4 class="mb-0"><?= minPrice() ?> DH</h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card text-white bg-dark mb-3 d-flex align-items-center" style="width: 18rem;">
-                <div class="card-header text-light font-monospace text-center fw-bold">Count Product</div>
-                <div class="card-body">
-
-                    <p class="card-text bg-light
-                 p-3 rounded-circle text-dark fw-bold"><?php echo (countProduct()) ?></p>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card shadow">
+                        <div class="p-3 pt-2 bg-dark text-light">
+                            <div class="text-end pt-1">
+                                <p class="mb-0 fw-light">Count Product</p>
+                                <h4 class="mb-0"><?= countProduct() ?></h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,52 +118,53 @@ if (!isset($_SESSION['admin-id'])) {
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
             </div>
         <?php endif ?>
+        <div class="table-responsive">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr class="align-middle">
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th><a href="add instruments.php" class="btn btn-success" style="width: 160px;">Add Product</a></th>
 
-        <table class="table table-dark table-striped mt-1 ">
-            <thead>
-                <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Description</th>
-                    <th scope="col"><a href="add instruments.php" class="btn btn-success float-end">Add Product</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $query = "SELECT * FROM instruments";
+                    $query_run = mysqli_query($conn, $query);
 
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $query = "SELECT * FROM instruments";
-                $query_run = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $instrument) {
+                    ?>
+                            <tr>
+                                <td><img width="55px" height="55px" src="../uploads/<?= $instrument['image']; ?>" alt=""></td>
+                                <td><?= $instrument['title']; ?></td>
+                                <td><?= $instrument['type']; ?></td>
+                                <td><?= $instrument['price']; ?> DH</td>
+                                <td><?= $instrument['description']; ?></td>
+                                <td>
+                                    <a href="view.php?id=<?= $instrument['id']; ?>" class="btn btn-info btn-sm">View</a>
+                                    <a href="edited.php?id=<?= $instrument['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
 
-                if (mysqli_num_rows($query_run) > 0) {
-                    foreach ($query_run as $instrument) {
-                ?>
-                        <tr>
-                            <td><img width="55px" height="55px" src="../uploads/<?= $instrument['image']; ?>" alt=""></td>
-                            <td><?= $instrument['title']; ?></td>
-                            <td><?= $instrument['type']; ?></td>
-                            <td><?= $instrument['price']; ?> DH</td>
-                            <td><?= $instrument['description']; ?></td>
-                            <td>
-                                <a href="view.php?id=<?= $instrument['id']; ?>" class="btn btn-info btn-sm">View</a>
-                                <a href="edited.php?id=<?= $instrument['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="scripts.php?idInstrument=<?= $instrument['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
 
-                                <a href="scripts.php?idInstrument=<?= $instrument['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
-
-                            </td>
-                        </tr>
-                <?php
+                                </td>
+                            </tr>
+                    <?php
+                        }
+                    } else {
+                        echo " <div class='d-flex justify-content-center'>
+                        <h5> <strong>No Product , Add Product </strong> </h5>
+                        </div>
+                        ";
                     }
-                } else {
-                    echo " <div class='d-flex justify-content-center'>
-                    <h5> <strong>No Product , Add Product </strong> </h5>
-                    </div>
-                    ";
-                }
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
+        </div>
         </div>
         </div>
         </div>

@@ -30,10 +30,10 @@ session_start();
         <img style="width: 150px;" src="../images/chrome-capture-2022-10-18-removebg-preview (1).png" alt="">
       </a>
     </div>
-    <div class="container  py-3" style="width: 550px">
-      <div class="d-flex justify-content-center align-items-center rounded bg-light">
+    <div class="container  py-3">
+      <div class="row justify-content-center align-items-center">
 
-        <div class="col-sm-10 col-md-11 col-lg-7 ">
+        <div class="col-10 col-sm-10 col-md-6 col-lg-4 rounded bg-light p-4">
           <!-- FORM -->
           <form method="POST" action="scripts.php" data-parsley-validate>
 
@@ -70,8 +70,9 @@ session_start();
               <label class="text form-label text-dark" for="form3Example4">Cofirm Password</label>
               <input type="password" name="Cpassword" id="form3Example5" class="form-control form-control-lg" placeholder="Confirm Password" required data-parsley-equalto="#form3Example4" />
             </div>
-            <div class="text-center text-lg-start mt-4 pt-2 d-flex justify-content-center">
-              <button name="signin" type="submit" class="login btn btn-primary btn-lg mb-4" style="padding-left: 2.5rem; padding-right: 2.5rem">Sign Up</button>
+            <div class="text-center my-4 pt-2">
+              <button name="signin" type="submit" class="login btn btn-primary btn-lg px-5 py-2">Sign Up</button>
+              <p class="text small fw-bold mt-2 pt-1 mb-0 text-wdark">Already have an account? <a href="login.php" class="text-danger">Login Now</a></p>
             </div>
           </form>
         </div>

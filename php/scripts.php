@@ -19,6 +19,8 @@ if (isset($_POST['signin'])) {
     $result = mysqli_query($conn, $select);
     if (mysqli_num_rows($result) > 0) {
         $_SESSION['error'] = 'user already exist';
+        header('location:sign up.php');
+        die;
     } else {
         $insert = " INSERT INTO users(name,email,password) VALUES ('$name','$email','$password')";
         mysqli_query($conn, $insert);
@@ -42,7 +44,7 @@ if (isset($_POST['login'])) {
         $_SESSION['admin-id'] = $row['id'];
         die;
     } else {
-        // $_SESSION['error'];
+        $_SESSION['error']  = 'Email or Password are incorrect !';
         header('location:login.php');
         die;
     }
@@ -62,9 +64,10 @@ if (isset($_POST['save']) && isset($_FILES['my_image'])) {
     $error = $_FILES['my_image']['error'];
 
     if ($error === 0) {
-        if ($img_size > 50000000) {
+        if ($img_size > 2000000) {
             $em = "Sorry, your file is too large.";
             header("Location: add instruments.php?error=$em");
+            die;
         } else {
             $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
             $img_ex_lc = strtolower($img_ex);
@@ -124,18 +127,42 @@ if (isset($_POST['update_instrument'])) {
     $Type = mysqli_real_escape_string($conn, $_POST['type']);
     $Price = mysqli_real_escape_string($conn, $_POST['price']);
     $Description = mysqli_real_escape_string($conn, $_POST['description']);
+    $img_name = $_FILES['my_image']['name'];
+    $img_size = $_FILES['my_image']['size'];
+    $tmp_name = $_FILES['my_image']['tmp_name'];
+    $error = $_FILES['my_image']['error'];
 
-    $query = "UPDATE instruments SET title='$Title', type='$Type', price='$Price', description='$Description' WHERE id='$instrument_id' ";
-    $query_run = mysqli_query($conn, $query);
+    if ($error === 0) {
+        if ($img_size > 2000000) {
+            $em = "Sorry, your file is too large.";
+            header("Location: add instruments.php?error=$em");
+            die;
+        } else {
+            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+            $img_ex_lc = strtolower($img_ex);
 
-    if ($query_run) {
-        $_SESSION['success'] = "instrument Updated Successfully";
-        header("Location: instruments.php");
-        exit(0);
+            $allowed_exs = array("jpg", "jpeg", "png");
+
+            if (in_array($img_ex_lc, $allowed_exs)) {
+                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                $img_upload_path = '../uploads/' . $new_img_name;
+                move_uploaded_file($tmp_name, $img_upload_path);
+
+                $query = "UPDATE instruments SET title='$Title', type='$Type', price='$Price', description='$Description', image='$new_img_name' WHERE id='$instrument_id' ";
+                mysqli_query($conn, $query);
+                $_SESSION['success'] = "instrument Updated Successfully";
+                header("Location: instruments.php");
+                die;
+            } else {
+                $em = "You can't upload files of this type";
+                header("Location: add instruments.php?error=$em");
+                die;
+            }
+        }
     } else {
         $_SESSION['erreur'] = "instrument Not Updated";
         header("Location: instruments.php");
-        exit(0);
+        die;
     }
 }
 
@@ -150,8 +177,8 @@ function countProduct()
 // COUNT PRICE FUNCTION
 function countPrice()
 {
-    $total = 0;
-    global $rows, $conn;
+
+    global  $conn;
     $requete = "SELECT SUM(price) FROM instruments;";
     $res = mysqli_fetch_assoc(mysqli_query($conn, $requete));
     return $res['SUM(price)'];
@@ -160,8 +187,8 @@ function countPrice()
 // MAX PRICE FUNCTION
 function maxPrice()
 {
-    $total = 0;
-    global $rows, $conn;
+
+    global  $conn;
     $requete = "SELECT MAX(price) FROM instruments;";
     $res = mysqli_fetch_array(mysqli_query($conn, $requete));
     return $res['MAX(price)'];
@@ -170,8 +197,8 @@ function maxPrice()
 // MIN PRICE FUNCTION
 function minPrice()
 {
-    $total = 0;
-    global $rows, $conn;
+
+    global  $conn;
     $requete = "SELECT MIN(price) FROM instruments;";
     $res = mysqli_fetch_array(mysqli_query($conn, $requete));
     return $res['MIN(price)'];
